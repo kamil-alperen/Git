@@ -29,7 +29,10 @@ public class App {
     }
 
     public static void main(String[] args) {
-        port(getHerokuAssignedPort());
+        Logger logger = LogManager.getLogger(App.class);
+        int port = Integer.parseInt(System.getenv("PORT"));
+        port(port);
+        logger.error("Current port number:" + port);
 
         get("/", (req, res) -> "Naber Irak iran");
 
