@@ -18,18 +18,14 @@ import spark.ModelAndView;
 import spark.template.mustache.MustacheTemplateEngine;
 
 public class App {
-    public String getGreeting() {
-        return "Hello world.";
-    }
-
-    public static boolean search(ArrayList<Integer> array, int e) {
+    public static int average(ArrayList<Integer> array) {
       System.out.println("inside search");
-      if (array == null) return false;
-
+      if (array == null) return 0;
+      int total = 0;
       for (int elt : array) {
-        if (elt == e) return true;
+        total += elt;
       }
-      return false;
+      return total / array.size();
     }
 
     public static void main(String[] args) {
@@ -38,7 +34,7 @@ public class App {
         port(port);
         logger.error("Current port number:" + port);
         
-        get("/", (req, res) -> "Naber Irak iran");
+        get("/", (req, res) -> "Welcome To My Website !");
 
         MustacheTemplateEngine engine = new MustacheTemplateEngine();
         get("/compute",
@@ -49,9 +45,6 @@ public class App {
         }, engine);
         
         post("/compute", (req, res) -> {
-          //System.out.println(req.queryParams("input1"));
-          //System.out.println(req.queryParams("input2"));
-
           String input1 = req.queryParams("input1");
           java.util.Scanner sc1 = new java.util.Scanner(input1);
           sc1.useDelimiter("[;\r\n]+");
@@ -64,13 +57,9 @@ public class App {
           sc1.close();
           System.out.println(inputList);
 
+          int result = App.average(inputList);
 
-          String input2 = req.queryParams("input2").replaceAll("\\s","");
-          int input2AsInt = Integer.parseInt(input2);
-
-          boolean result = App.search(inputList, input2AsInt);
-
-          Map<String, Boolean> map = new HashMap<String, Boolean>();
+          Map<String, Integer> map = new HashMap<String, Integer>();
           map.put("result", result);
           return new ModelAndView(map, "compute.mustache");
         }, new MustacheTemplateEngine());
@@ -82,7 +71,7 @@ public class App {
         if (processBuilder.environment().get("PORT") != null) {
             return Integer.parseInt(processBuilder.environment().get("PORT"));
         }
-        return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
+        return 4567; 
     }
 
       
