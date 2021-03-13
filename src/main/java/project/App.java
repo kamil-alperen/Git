@@ -71,8 +71,6 @@ public class App {
         logger.error("Current port number:" + port);
         //int number = getHerokuAssignedPort();
         //port(number);
-
-        System.out.println("Port number is : "+number);
         
         get("/", (req, res) -> "Welcome To My Website !\nPlease add compute to URL to access the application");
 
