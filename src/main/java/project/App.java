@@ -42,7 +42,6 @@ public class App {
       for(int i = 0;i < length;i++){
         map.put(students.get(i), scores.get(i));
       }
-      map = map.entrySet().stream().sorted(Map.Entry.comparingByValue()).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,(e1,e2) -> e1, LinkedHashMap::new));
       String message = "";
       for(Map.Entry<String,Integer> entry : map.entrySet()){
           String note = determineNote(entry.getValue(), limitation, standard_deviation);
