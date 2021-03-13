@@ -65,12 +65,12 @@ public class App {
     }
 
     public static void main(String[] args) {
-        //Logger logger = LogManager.getLogger(App.class);
-        //int port = Integer.parseInt(System.getenv("PORT"));
-        //port(port);
-        //logger.error("Current port number:" + port);
-        int number = getHerokuAssignedPort();
-        port(number);
+        Logger logger = LogManager.getLogger(App.class);
+        int port = Integer.parseInt(System.getenv("PORT"));
+        port(port);
+        logger.error("Current port number:" + port);
+        //int number = getHerokuAssignedPort();
+        //port(number);
 
         System.out.println("Port number is : "+number);
         
