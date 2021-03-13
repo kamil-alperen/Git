@@ -34,6 +34,9 @@ public class App {
       if(students == null || scores == null)return "Please enter some student/score inputs";
       if(limitation <= 0 | limitation > 100)return "Please enter valid positive limitation";
       if(standard_deviation <= 0 | standard_deviation > 100)return "Please enter valid positive standard deviation";
+      for(int i = 0;i < scores.size();i++){
+        if(scores.get(i) < 0 | scores.get(i) > 100)return "Please enter valid positive scores";
+      }
       int length = Math.min(students.size(), scores.size());
       Map<String,Integer> map = new HashMap<>();
       for(int i = 0;i < length;i++){

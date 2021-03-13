@@ -36,6 +36,18 @@ class AppTest {
         String message = "Please enter some student/score inputs";
         assertEquals(message, App.orderAndScoreStudents(students, scores, limitation, standard_deviation));
     }
+    @Test void scoresNegative(){
+        students = new ArrayList<>();
+        students.add("alperen yilmaz");
+        students.add("murat genc");
+        scores = new ArrayList<>();
+        scores.add(10);
+        scores.add(-20);
+        limitation = 60;
+        standard_deviation = 5;
+        String message = "Please enter valid positive scores";
+        assertEquals(message, App.orderAndScoreStudents(students, scores, limitation, standard_deviation));
+    }
     @Test void limitation_isNegative(){
         students = new ArrayList<>();
         students.add("alperen yilmaz");
