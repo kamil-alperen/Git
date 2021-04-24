@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/kamil-alperen/Trial.svg?branch=main)](https://travis-ci.org/kamil-alperen/Trial)
+[![Build Status](https://travis-ci.org/kamil-alperen/Git.svg?branch=main)](https://travis-ci.org/kamil-alperen/Git)
 
 A test application with continuous integration, static analysis and deployment
 
